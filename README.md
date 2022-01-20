@@ -16,8 +16,6 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Unit Tests will also run via GitHub Actions on every push to `main` and on every Pull request.
-
 ## Building for production
 ### `npm run build`
 
@@ -41,4 +39,8 @@ Shows formatting errors.
 ### `npm run format-fix`
 Fixes formatting errors. 
 
-The Linter and Formatter will also run via GitHub Actions with every push to `main` and on every pull request.
+## GitHub Actions
+A set of GitHub actions will run with every push to `main` and on every pull request to ensure that
+* the code builds
+* there are no linting or formatting issues
+* all unit tests pass
