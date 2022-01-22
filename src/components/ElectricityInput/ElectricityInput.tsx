@@ -1,15 +1,26 @@
 import {
   Autocomplete,
+  Button,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from "@mui/material";
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { countries } from "../../assets/countries";
 import "./ElectricityInput.css";
 
-function ElectricityInput() {
+interface ElectricityInputValue {
+  countryCode: string;
+  electricityUsage: number;
+  unit: string;
+}
+interface ElectricityInputProps {
+  onSubmitClick(input: ElectricityInputValue): void;
+}
+
+function ElectricityInput({ onSubmitClick }: ElectricityInputProps) {
   const units = ["kwh", "mwh"];
 
   const [selectedCountry, setSelectedCountry] = React.useState<string | null>(
@@ -25,6 +36,8 @@ function ElectricityInput() {
     React.useState(false);
   const [hasCountrySelectError, setHasCountrySelectError] =
     React.useState(false);
+
+  const [isFormValid, setIsFormValid] = React.useState(false);
 
   const validateCountrySelect = () => {
     if (selectedCountry === null || selectedCountry.trim() === "") {
@@ -56,6 +69,29 @@ function ElectricityInput() {
     );
   }, [electricityUsageInput]);
 
+  useEffect(() => {
+    setIsFormValid(
+      !hasCountrySelectError &&
+        !hasElectricityUsageInputError &&
+        !!selectedCountry &&
+        !!electricityUsage
+    );
+  }, [
+    hasCountrySelectError,
+    hasElectricityUsageInputError,
+    selectedCountry,
+    electricityUsage,
+  ]);
+
+  const submitElectricityInput = () => {
+    const electricityInputValue: ElectricityInputValue = {
+      countryCode: selectedCountry ?? "",
+      electricityUsage: electricityUsage ?? 0,
+      unit: selectedUnit,
+    };
+    onSubmitClick(electricityInputValue);
+  };
+
   return (
     <div className="electricity-input">
       <InputLabel htmlFor="country-select" required>
@@ -84,13 +120,9 @@ function ElectricityInput() {
         className="mb-2"
       />
 
-      <div className="row">
+      <div className="row mb-2">
         <div className="column electricity-input">
-          <InputLabel
-            htmlFor="electricity-usage-input"
-            className="align-start"
-            required
-          >
+          <InputLabel htmlFor="electricity-usage-input" required>
             Electricity Usage
           </InputLabel>
           <TextField
@@ -125,8 +157,21 @@ function ElectricityInput() {
           </Select>
         </div>
       </div>
+      <div className="row justify-end">
+        <Button
+          variant="contained"
+          disabled={!isFormValid}
+          onClick={submitElectricityInput}
+        >
+          Submit
+        </Button>
+      </div>
     </div>
   );
 }
+
+ElectricityInput.propTypes = {
+  onSubmitClick: PropTypes.func.isRequired,
+};
 
 export default ElectricityInput;

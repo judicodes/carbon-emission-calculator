@@ -9,7 +9,7 @@ function App() {
       <AppBar position="static" className="app-bar">
         Carbon Emission Calculator
       </AppBar>
-      <ElectricityInput data-testid="electricity-input" />
+      <ElectricityInput onSubmitClick={() => {}} />
     </div>
   );
 }

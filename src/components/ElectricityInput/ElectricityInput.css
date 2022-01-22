@@ -1,14 +1,16 @@
+/* TODO: make responsive */
+
 .electricity-input {
   width: 33%;
-}
-
-.form-group {
-  width: 100%;
 }
 
 .row {
   display: flex;
   width: 100%;
+}
+
+.row.justify-end {
+  justify-content: end;
 }
 
 .column {
@@ -20,10 +22,6 @@
 .column.unit {
   width: 25%;
   margin-left: 1rem;
-}
-
-.column.align-start {
-  align-self: flex-start;
 }
 
 .mb-2 {
