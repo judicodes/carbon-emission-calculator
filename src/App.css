@@ -9,3 +9,10 @@
   padding: 1rem 2rem;
   margin-bottom: 8rem;
 }
+
+.footer {
+  position: fixed;
+  bottom: 1rem;
+  font-size: smaller;
+  color: grey;
+}

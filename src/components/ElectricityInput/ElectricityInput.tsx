@@ -94,7 +94,7 @@ function ElectricityInput({ onSubmitClick }: ElectricityInputProps) {
   };
 
   return (
-    <div className="electricity-input">
+    <div className="electricity-input mb-2">
       <InputLabel htmlFor="country-select" required>
         Location (Country)
       </InputLabel>
