@@ -20,6 +20,7 @@
       "ignorePackages",
       { "ts": "never", "tsx": "never" }
     ],
+    "no-alert": "off",
     "no-unused-vars": "warn",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off"

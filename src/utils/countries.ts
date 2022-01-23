@@ -3,8 +3,6 @@ export interface Country {
   code: string;
 }
 
-// TODO: add more countries
-
 const countries: Country[] = [
   {
     displayName: "USA",
@@ -15,12 +13,38 @@ const countries: Country[] = [
     code: "ca",
   },
   {
+    displayName: "Austria",
+    code: "at",
+  },
+  {
+    displayName: "Belgium",
+    code: "be",
+  },
+  {
     displayName: "Germany",
     code: "de",
   },
+  {
+    displayName: "Croatia",
+    code: "hr",
+  },
+  {
+    displayName: "Estonia",
+    code: "ee",
+  },
+  {
+    displayName: "France",
+    code: "fr",
+  },
+  {
+    displayName: "Italy",
+    code: "it",
+  },
+  {
+    displayName: "Portugal",
+    code: "pt",
+  },
 ];
-
-// TODO: add unit tests
 
 function getDisplayNameFromCountryCode(countryCode: string) {
   return (

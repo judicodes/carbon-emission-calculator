@@ -2,18 +2,28 @@
 
 # Carbon Emission Calculator
 
-A small React app which takes electricity usage as an input and displays corresponding carbon emission in a diagram.
+A small React app which takes electricity usage in a selected country as an input and displays corresponding carbon emission in a diagram.
+
+The app is currently not responsive and hence works best on a Desktop browser.
+
+Please note that for demonstration purposes, only a small number of countries can be selected at the moment.
 
 ## Open points
 
 Some things that could be done as the next steps.
 
+- better error handling for API requests, use Material UI Components for error message
+- make the app responsive
 - customize the Carbon Emission Chart further
   - create custom x-axis ticks to display a multiline tick with date and time
-- add more tests
-  - especially for interaction between components
+- add much more tests
+- complete the list of supported countries as listed [here](https://www.notion.so/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0)
 
 ## Running locally
+
+For the carbon emission calculation, you need an account with [Carbon Interface](https://www.carboninterface.com/).
+
+From your account, go to _Developers_ > _API Key_, copy the key and paste it into the file `.env`. Leave the quotation marks, so the file should look something like this: `REACT_APP_API_KEY="abcd..."`
 
 ### `npm start`
 
