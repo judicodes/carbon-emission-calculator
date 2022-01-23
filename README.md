@@ -1,5 +1,3 @@
-<!-- TODO: explain dependencies and add open points and how to set API KEY -->
-
 # Carbon Emission Calculator
 
 A small React app which takes electricity usage in a selected country as an input and displays corresponding carbon emission in a diagram.
@@ -23,6 +21,18 @@ Some things that could be done as the next steps.
 - add much more tests
 - complete the list of supported countries as listed [here](https://www.notion.so/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0)
 - a small usability glitch: when you filter the results by country and then add another data point for that same country, the chart with the filtered results does not automatically rerender
+
+## Dependencies
+
+The app is built with React, Material UI and TypeScript.
+
+Some additional dependencies include:
+
+| Dependency                  | Used For      | Why this one?                                                             |
+| --------------------------- | ------------- | ------------------------------------------------------------------------- |
+| Jest, React Testing Library | Unit Testing  | Allows to conduct unit tests from user perspective                        |
+| Recharts                    | Charts        | Looks nice and is well documented                                         |
+| Axios                       | HTTP Requests | A bit more versatile and slightly better browser support than `fetch` API |
 
 ## Running locally
 
