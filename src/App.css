@@ -11,8 +11,7 @@
 }
 
 .footer {
-  position: fixed;
-  bottom: 1rem;
+  margin: 8rem 0 2rem 0;
   font-size: smaller;
   color: grey;
 }
