@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { countries } from "../../assets/countries";
 import "./ElectricityInput.css";
 
-interface ElectricityInputValue {
+export interface ElectricityInputValue {
   countryCode: string;
   electricityUsage: number;
   unit: string;
@@ -175,4 +175,4 @@ ElectricityInput.propTypes = {
   onSubmitClick: PropTypes.func.isRequired,
 };
 
-export default ElectricityInput;
+export { ElectricityInput };
