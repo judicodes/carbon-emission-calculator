@@ -23,7 +23,17 @@ Some things that could be done as the next steps.
 
 For the carbon emission calculation, you need an account with [Carbon Interface](https://www.carboninterface.com/).
 
-From your account, go to _Developers_ > _API Key_, copy the key and paste it into the file `.env`. Leave the quotation marks, so the file should look something like this: `REACT_APP_API_KEY="abcd..."`
+From your account, go to _Developers_ > _API Key_, copy the key and paste it into a file called`.env` under the variable name `REACT_APP_API_KEY`.
+
+The `.env` file should be top-level in the repository (so next to this README and `package.json` for example) and look like so:
+
+```
+REACT_APP_API_KEY="abcd..."
+```
+
+### `npm install`
+
+Install all dependencies necessary to run, develop and test the app.
 
 ### `npm start`
 
