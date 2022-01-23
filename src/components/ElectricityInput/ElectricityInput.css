@@ -1,0 +1,29 @@
+/* TODO: make responsive */
+
+.electricity-input {
+  width: 33%;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.row.justify-end {
+  justify-content: end;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.column.unit {
+  width: 25%;
+  margin-left: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
