@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import ElectricityInput from "./ElectricityInput";
+import { ElectricityInput } from "./ElectricityInput";
 
 const onSubmitMock = jest.fn();
 

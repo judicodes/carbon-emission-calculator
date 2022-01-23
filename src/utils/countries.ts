@@ -20,4 +20,12 @@ const countries: Country[] = [
   },
 ];
 
-export { countries };
+// TODO: add unit tests
+
+function getDisplayNameFromCountryCode(countryCode: string) {
+  return (
+    countries.find((country) => country.code === countryCode)?.displayName ?? ""
+  );
+}
+
+export { countries, getDisplayNameFromCountryCode };
