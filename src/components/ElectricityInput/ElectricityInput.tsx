@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
-import { countries } from "../../assets/countries";
+import { countries } from "../../utils/countries";
 import "./ElectricityInput.css";
 
 export interface ElectricityInputValue {

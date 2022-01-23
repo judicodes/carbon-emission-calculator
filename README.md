@@ -1,6 +1,17 @@
+<!-- TODO: explain dependencies and add open points and how to set API KEY -->
+
 # Carbon Emission Calculator
 
 A small React app which takes electricity usage as an input and displays corresponding carbon emission in a diagram.
+
+## Open points
+
+Some things that could be done as the next steps.
+
+- customize the Carbon Emission Chart further
+  - create custom x-axis ticks to display a multiline tick with date and time
+- add more tests
+  - especially for interaction between components
 
 ## Running locally
 
