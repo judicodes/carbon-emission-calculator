@@ -17,6 +17,7 @@ interface ElectricityInputValue {
   unit: string;
 }
 interface ElectricityInputProps {
+  // eslint-disable-next-line no-unused-vars
   onSubmitClick(input: ElectricityInputValue): void;
 }
 
