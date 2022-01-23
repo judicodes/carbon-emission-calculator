@@ -1,4 +1,5 @@
-import React from "react";
+import { Autocomplete, InputLabel, TextField } from "@mui/material";
+import React, { useEffect } from "react";
 import {
   Area,
   AreaChart,
@@ -12,8 +13,12 @@ import {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
-
-import { getDisplayNameFromCountryCode } from "../../utils/countries";
+import {
+  countries,
+  Country,
+  getDisplayNameFromCountryCode,
+} from "../../utils/countries";
+import "./CarbonEmissionChart.css";
 
 export interface CarbonEmissionDataPoint {
   country: string;
@@ -25,21 +30,16 @@ interface CarbonEmissionChartInputProps {
   data: CarbonEmissionDataPoint[];
 }
 
-// TODO: add country filter
-
 function CarbonEmissionChart({ data }: CarbonEmissionChartInputProps) {
-  data.sort((dataPoint, dataPointToCompare) => {
-    if (dataPoint.estimatedAt > dataPointToCompare.estimatedAt) {
-      return 1;
-    }
-    if (dataPoint.estimatedAt < dataPointToCompare.estimatedAt) {
-      return -1;
-    }
-    return 0;
-  });
+  const [selectedCountryFilter, setSelectedCountryFilter] =
+    React.useState<Country | null>(null);
+  const [dataPoints, setDataPoints] = React.useState(data);
 
   const getParsedTimestamp = (timestamp: Date) =>
     timestamp.toLocaleDateString();
+
+  const isDataAvailableForCountry = (option: Country) =>
+    dataPoints.findIndex((dataPoint) => dataPoint.country === option.code) > -1;
 
   const renderTooltip = ({
     active,
@@ -67,12 +67,65 @@ function CarbonEmissionChart({ data }: CarbonEmissionChartInputProps) {
     borderRadius: "10px",
   };
 
+  const filterByCountry = (country: Country | null) => {
+    setSelectedCountryFilter(country);
+    if (!country) {
+      setDataPoints(data);
+    } else {
+      setDataPoints(
+        dataPoints.filter((dataPoint) => dataPoint.country === country.code)
+      );
+    }
+  };
+
+  useEffect(() => {
+    filterByCountry(selectedCountryFilter);
+  }, [selectedCountryFilter]);
+
+  const sortDataByDate = () => {
+    dataPoints.sort((dataPoint, dataPointToCompare) => {
+      if (dataPoint.estimatedAt > dataPointToCompare.estimatedAt) {
+        return 1;
+      }
+      if (dataPoint.estimatedAt < dataPointToCompare.estimatedAt) {
+        return -1;
+      }
+      return 0;
+    });
+  };
+
+  useEffect(() => {
+    setDataPoints(data);
+    sortDataByDate();
+    if (selectedCountryFilter) {
+      filterByCountry(selectedCountryFilter);
+    }
+  }, [data]);
+
   return (
     <div data-testid="carbon-emission-chart">
+      <div className="country-filter">
+        <InputLabel htmlFor="country-filter">
+          Filter emissions by country
+        </InputLabel>
+        <Autocomplete
+          className="mb-2"
+          id="country-filter"
+          disablePortal
+          value={selectedCountryFilter}
+          options={countries}
+          getOptionLabel={(option) => option.displayName}
+          getOptionDisabled={(option) => !isDataAvailableForCountry(option)}
+          onChange={(_, newValue) => {
+            setSelectedCountryFilter(newValue);
+          }}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      </div>
       <AreaChart
         width={1000}
         height={350}
-        data={data}
+        data={dataPoints}
         margin={{ top: 30, right: 30, left: 30, bottom: 0 }}
       >
         <defs>

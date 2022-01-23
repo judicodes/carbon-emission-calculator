@@ -12,12 +12,17 @@ Please note that for demonstration purposes, only a small number of countries ca
 
 Some things that could be done as the next steps.
 
-- better error handling for API requests, use Material UI Components for error message
+- UX improvements
+  - more explanation on how to use the app
+  - feedback for successful API requests
+  - better error handling for API requests, use Material UI Components for error message
+  - improve layout and alignment
 - make the app responsive
 - customize the Carbon Emission Chart further
   - create custom x-axis ticks to display a multiline tick with date and time
 - add much more tests
 - complete the list of supported countries as listed [here](https://www.notion.so/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0)
+- a small usability glitch: when you filter the results by country and then add another data point for that same country, the chart with the filtered results does not automatically rerender
 
 ## Running locally
 
